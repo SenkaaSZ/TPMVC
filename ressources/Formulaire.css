@@ -1,0 +1,12 @@
+﻿th {
+    font-weight : normal;
+    text-align : left;
+}
+
+caption {
+    caption-side: top;
+}
+
+table, th, td {
+    border : 1px solid black;
+}

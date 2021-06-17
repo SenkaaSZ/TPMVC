@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TPLOCAL1.Data;
 using TPLOCAL1.Models;
 
 //L'énoncé du tp et le logo hn sont livrés dans le répertoire /ressources de la solution
@@ -39,13 +40,42 @@ namespace TPLOCAL1.Controllers
 
 
         //méthode pour envoyer les données du formulaire vers la page de validation
-        [HttpPost]
-        public ActionResult ValidationFormulaire(/*model*/)
+        /*[HttpPost]
+        public ActionResult ValidationFormulaire(FormulaireModel formulaire)
         {
             //reste à faire : tester de si les champs du modele sont bien remplis
             //s'ils ne sont pas bien remplis, afficher une erreur et rester sur la page formulaire
             //sinon, appeler la page ValidationFormulaire avec les données remplies par l'utilisateur
-                
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(formulaire);
+        }*/
+
+
+        private TPLOCAL1Context db = new TPLOCAL1Context();
+        // GET: FormulaireModels/Create
+        public ActionResult Formulaire()
+        {
+            return View();
+        }
+
+        // POST: FormulaireModels/Create
+        // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
+        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Formulaire([Bind(Include = "Id,Nom,Prenom")] FormulaireModel formulaireModel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.FormulaireModels.Add(formulaireModel);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(formulaireModel);
         }
     }
 }

@@ -1,0 +1,128 @@
+﻿@model TPLOCAL1.Models.FormulaireModel
+
+@{
+    ViewBag.Title = "ValidationFormulaire";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Formulaire TP HN avis</title>
+    <link rel="stylesheet" href="~/ressources/Index.css" />
+    <link rel="stylesheet" href="~/ressources/Formulaire.css" />
+</head>
+<body>
+    <header>
+        <img src="~/ressources/GroupeHN.png" class="image" alt="GroupeHN" />
+        <h1>Bienvenue dans le TP HN</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/Home/Index">Accueil</a></li>
+            <li><a href="/Home/Index/Listeavis">Liste avis</a></li>
+        </ul>
+    </nav>
+    <section>
+        <p>Votre formulaire a bien été pris en compte</p>
+        <table>
+            <caption>Information personnelles</caption>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Nom)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prenom)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Prenom)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sexe)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Sexe)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adresse)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Adresse)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Codepostal)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Codepostal)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ville)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Ville)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adressemail)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Adressemail)
+                </td>
+            </tr>
+        </table>
+        <table>
+            <caption>Informations formation suivie</caption>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dateformation)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Dateformation)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Formation)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Formation)
+                </td>
+            </tr>
+        </table>
+        <table>
+            <caption>Avis sur la formation</caption>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cobol)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Cobol)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Objet)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Objet)
+                </td>
+            </tr>
+        </table>
+    </section>
+</body>
+</html>
