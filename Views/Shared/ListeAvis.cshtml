@@ -1,0 +1,79 @@
+﻿
+@model IEnumerable<TPLOCAL1.Models.Avis>
+
+@{
+    //ViewBag.Title = "ListeAvis";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Formulaire TP HN avis</title>
+    <link rel="stylesheet" href="~/ressources/Index.css" />
+    <link rel="stylesheet" href="~/ressources/Formulaire.css" />
+    <link rel="stylesheet" href="~/ressources/ListeAvis.css" />
+</head>
+<body>
+    <header>
+        <img src="~/ressources/GroupeHN.png" class="image" alt="GroupeHN" />
+        <h1>Liste des avis</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/Home/Index">Accueil</a></li>
+            <li><a href="/Home/Index/Formulaire">Formulaire</a></li>
+        </ul>
+    </nav>
+    <section>
+        <table>
+            <caption>Liste</caption>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prenom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AvisDonne)
+                </th>
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Prenom)
+                        </td>
+                        @if (item.AvisDonne == "O")
+                        {
+                            <td class="green">
+                                Oui
+                            </td>
+                        }
+                        else if (item.AvisDonne == "N")
+                        {
+                            <td class="red">
+                                Non
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AvisDonne)
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+        </table>
+    </section>
+</body>
+</html>

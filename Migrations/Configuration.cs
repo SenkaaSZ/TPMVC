@@ -9,7 +9,7 @@ namespace TPLOCAL1.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(TPLOCAL1.Data.TPLOCAL1Context context)

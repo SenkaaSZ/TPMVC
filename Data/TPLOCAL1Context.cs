@@ -20,5 +20,7 @@ namespace TPLOCAL1.Data
         }
 
         public System.Data.Entity.DbSet<TPLOCAL1.Models.FormulaireModel> FormulaireModels { get; set; }
+
+        public System.Data.Entity.DbSet<TPLOCAL1.Models.Avis> Avis { get; set; }
     }
 }

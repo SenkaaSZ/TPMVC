@@ -65,6 +65,7 @@ namespace TPLOCAL1.Models
     /// </summary>
     public class Avis
     {
+        public int Id { get; set; }
         /// <summary>
         /// Nom de famille
         /// </summary>

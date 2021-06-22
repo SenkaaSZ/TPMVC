@@ -14,6 +14,8 @@ namespace TPLOCAL1.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly TPLOCAL1Context db = new TPLOCAL1Context();
+
         // méthode appelée par la routeur "naturellement"
         public ActionResult Index(string id)
         {
@@ -27,10 +29,22 @@ namespace TPLOCAL1.Controllers
                 {
                     case "ListeAvis":
                         //reste à faire : coder la lecture du fichier xml fourni
-                        return View(id);
+                        ListeAvis AvisList = new ListeAvis();
+                        List<Avis> dataXML = AvisList.GetAvis("C:/Users/2jume/source/repos/TPLOCAL1-base/FichierXML/DataAvis.xml");
+                        return View(id, dataXML);
                     case "Formulaire":
                         //reste à faire : appeler la vue Formulaire avec le modèle de données vide
-                        return View(id);
+                        FormulaireModel formulaireModel = new FormulaireModel();
+                        if (formulaireModel.Nom == null)
+                        {
+                            ModelState.AddModelError("", "Le champ 'Nom' est exigé");
+                        }
+
+                        if (formulaireModel.Adresse == null || formulaireModel.Adresse.Length < 5)
+                        {
+                            ModelState.AddModelError("", "adresse trop courte");
+                        }
+                        return View(id, formulaireModel);
                     default:
                         //renvoie vers Index (voir routage dans RouteConfig.cs)
                         return View();
@@ -40,42 +54,32 @@ namespace TPLOCAL1.Controllers
 
 
         //méthode pour envoyer les données du formulaire vers la page de validation
-        /*[HttpPost]
-        public ActionResult ValidationFormulaire(FormulaireModel formulaire)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ValidationFormulaire([Bind(Include = "Id,Nom,Prenom,Sexe,Adresse,Codepostal,Ville,Adressemail,DateFormation,Formation,Cobol,Objet")] FormulaireModel formulaireModel)
         {
             //reste à faire : tester de si les champs du modele sont bien remplis
             //s'ils ne sont pas bien remplis, afficher une erreur et rester sur la page formulaire
             //sinon, appeler la page ValidationFormulaire avec les données remplies par l'utilisateur
             if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
-            }
-            return View(formulaire);
-        }*/
-
-
-        private TPLOCAL1Context db = new TPLOCAL1Context();
-        // GET: FormulaireModels/Create
-        public ActionResult Formulaire()
-        {
-            return View();
-        }
-
-        // POST: FormulaireModels/Create
-        // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Formulaire([Bind(Include = "Id,Nom,Prenom")] FormulaireModel formulaireModel)
-        {
-            if (ModelState.IsValid)
-            {
                 db.FormulaireModels.Add(formulaireModel);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(formulaireModel);
             }
+            /*else
+            {
+                if (formulaireModel.Nom == null)
+                {
+                    ModelState.AddModelError("", "Le champ 'Nom' est exigé");
+                }
 
-            return View(formulaireModel);
+                if (formulaireModel.Adresse == null || formulaireModel.Adresse.Length < 5)
+                {
+                    ModelState.AddModelError("", "adresse trop courte");
+                }
+            }*/
+            return RedirectToAction("Index/Formulaire");
         }
     }
 }
