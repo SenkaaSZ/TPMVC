@@ -10,6 +10,7 @@
 
 <html>
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Formulaire TP HN avis</title>
     <link rel="stylesheet" href="~/ressources/Index.css" />
@@ -27,113 +28,108 @@
         </ul>
     </nav>
     <section>
-        @using (Html.BeginForm("ValidationFormulaire", "Home", FormMethod.Post))
-        {
-        @Html.AntiForgeryToken()
-        <table>
-            <caption>Information personnelles</caption>
-            <tr>
-                <th>Nom</th>
-                <td>
-                    <input type="text" name="Nom" value="" />
-                    @Html.ValidationMessageFor(model => model.Nom)
-                </td>
-            </tr>
-            <tr>
-                <th>Prénom</th>
-                <td>
-                    <input type="text" name="Prenom" value="" />
-                    @Html.ValidationMessageFor(model => model.Prenom)
-                </td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>
-                    <label for="sex-select"></label>
-                    <select name="Sexe" id=" =sex-select">
-                        <option value="">Sélectionner un sexe</option>
-                        <option value="Homme">Homme</option>
-                        <option value="Femme">Femme</option>
-                        <option value="Autre">Autre</option>
-                    </select>
-                    @Html.ValidationMessageFor(model => model.Sexe)
-                </td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>
-                    <input type="text" name="Adresse" value="" />
-                    @Html.ValidationMessageFor(model => model.Adresse)
-                </td>
-            </tr>
-            <tr>
-                <th>Code Postal</th>
-                <td>
-                    <input type="text" name="Codepostal" value="" />
-                    @Html.ValidationMessageFor(model => model.Codepostal)
-                </td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>
-                    <input type="text" name="Ville" value="" />
-                    @Html.ValidationMessageFor(model => model.Ville)
-                </td>
-            </tr>
-            <tr>
-                <th>Adresse mail</th>
-                <td>
-                    <input type="text" name="Adressemail" value="" />
-                    @Html.ValidationMessageFor(model => model.Adressemail)
-                </td>
-            </tr>
-        </table>
-        <table>
-            <caption>Informations formation suivie</caption>
-            <tr>
-                <th>Date début formation</th>
-                <td>
-                    <input type="date" name="Dateformation" value="" />
-                    @Html.ValidationMessageFor(model => model.Dateformation)
-                </td>
-            </tr>
-            <tr>
-                <th>Formation suivie</th>
-                <td>
-                    <label for="formation-select"></label>
-                    <select name="Formation" id="formation-select">
-                        <option value="">Sélectionner une formation</option>
-                        <option value="Cobol">Formation Cobol</option>
-                        <option value="Objet">Formation objet</option>
-                        <option value="Double">Formation double compétence</option>
-                    </select>
-                    @Html.ValidationMessageFor(model => model.Formation)
-                </td>
-            </tr>
-        </table>
-        <table>
-            <caption>Avis sur la formation</caption>
-            <tr>
-                <th>Formation Cobol</th>
-                <td>
-                    <input type="text" name="Cobol" value="" />
-                    @Html.ValidationMessageFor(model => model.Cobol)
-                </td>
-            </tr>
-            <tr>
-                <th>Formation C#</th>
-                <td>
-                    <input type="text" name="Objet" value="" />
-                    @Html.ValidationMessageFor(model => model.Objet)
-                </td>
-            </tr>
-        </table>
-        <input type="submit" value="Valider" />
-
-        }
+        <form action="/Home/ValidationFormulaire" method="post">
+            @Html.AntiForgeryToken()
+            <table>
+                <caption>Information personnelles</caption>
+                <tr>
+                    <th>Nom</th>
+                    <td>
+                        <input type="text" name="Nom" value="" />
+                        @Html.ValidationMessageFor(model => model.Nom)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Prénom</th>
+                    <td>
+                        <input type="text" name="Prenom" value="" />
+                        @Html.ValidationMessageFor(model => model.Prenom)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sexe</th>
+                    <td>
+                        <label for="sex-select"></label>
+                        <select name="Sexe" id=" =sex-select">
+                            <option value="">Sélectionner un sexe</option>
+                            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.Sexe)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>
+                        <input type="text" name="Adresse" value="" />
+                        @Html.ValidationMessageFor(model => model.Adresse)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Code Postal</th>
+                    <td>
+                        <input type="text" name="Codepostal" value="" />
+                        @Html.ValidationMessageFor(model => model.Codepostal)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>
+                        <input type="text" name="Ville" value="" />
+                        @Html.ValidationMessageFor(model => model.Ville)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Adresse mail</th>
+                    <td>
+                        <input type="email" name="Adressemail" value="" />
+                        @Html.ValidationMessageFor(model => model.Adressemail)
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <caption>Informations formation suivie</caption>
+                <tr>
+                    <th>Date début formation</th>
+                    <td>
+                        <input type="date" name="Dateformation" value="" />
+                        @Html.ValidationMessageFor(model => model.Dateformation)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Formation suivie</th>
+                    <td>
+                        <label for="formation-select"></label>
+                        <select name="Formation" id="formation-select">
+                            <option value="">Sélectionner une formation</option>
+                            <option value="Cobol">Formation Cobol</option>
+                            <option value="Objet">Formation objet</option>
+                            <option value="Double">Formation double compétence</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.Formation)
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <caption>Avis sur la formation</caption>
+                <tr>
+                    <th>Formation Cobol</th>
+                    <td>
+                        <input type="text" name="Cobol" value="" />
+                        @Html.ValidationMessageFor(model => model.Cobol)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Formation C#</th>
+                    <td>
+                        <input type="text" name="Objet" value="" />
+                        @Html.ValidationMessageFor(model => model.Objet)
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Valider" />
+        </form>
     </section>
 </body>
 </html>
-
-<script src="~/Scripts/jquery.validate.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>

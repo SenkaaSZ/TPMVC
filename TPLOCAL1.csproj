@@ -477,7 +477,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\FormulaireModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\TPLOCAL1Context.cs" />
     <Compile Include="Global.asax.cs">
@@ -490,6 +489,10 @@
     <Compile Include="Migrations\202106211836200_updateMigration.cs" />
     <Compile Include="Migrations\202106211836200_updateMigration.Designer.cs">
       <DependentUpon>202106211836200_updateMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106221038411_UpdateFormulaireModel.cs" />
+    <Compile Include="Migrations\202106221038411_UpdateFormulaireModel.Designer.cs">
+      <DependentUpon>202106221038411_UpdateFormulaireModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Avis.cs" />
@@ -505,11 +508,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Formulaire.cshtml" />
     <Content Include="Views\Shared\ValidationFormulaire.cshtml" />
-    <Content Include="Views\FormulaireModels\Create.cshtml" />
-    <Content Include="Views\FormulaireModels\Delete.cshtml" />
-    <Content Include="Views\FormulaireModels\Details.cshtml" />
-    <Content Include="Views\FormulaireModels\Edit.cshtml" />
-    <Content Include="Views\FormulaireModels\Index.cshtml" />
     <Content Include="Views\Shared\ListeAvis.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -527,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106211836200_updateMigration.resx">
       <DependentUpon>202106211836200_updateMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106221038411_UpdateFormulaireModel.resx">
+      <DependentUpon>202106221038411_UpdateFormulaireModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

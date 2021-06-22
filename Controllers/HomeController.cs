@@ -34,16 +34,20 @@ namespace TPLOCAL1.Controllers
                         return View(id, dataXML);
                     case "Formulaire":
                         //reste à faire : appeler la vue Formulaire avec le modèle de données vide
-                        FormulaireModel formulaireModel = new FormulaireModel();
-                        if (formulaireModel.Nom == null)
+                        FormulaireModel formulaireModel = new FormulaireModel
                         {
-                            ModelState.AddModelError("", "Le champ 'Nom' est exigé");
-                        }
-
-                        if (formulaireModel.Adresse == null || formulaireModel.Adresse.Length < 5)
-                        {
-                            ModelState.AddModelError("", "adresse trop courte");
-                        }
+                            Nom = "",
+                            Prenom = "",
+                            Sexe = "",
+                            Adresse = "",
+                            Codepostal = "",
+                            Ville = "",
+                            Adressemail = "",
+                            Dateformation = DateTime.Now,
+                            Formation = "",
+                            Cobol = "",
+                            Objet = ""
+                        };
                         return View(id, formulaireModel);
                     default:
                         //renvoie vers Index (voir routage dans RouteConfig.cs)
@@ -65,21 +69,12 @@ namespace TPLOCAL1.Controllers
             {
                 db.FormulaireModels.Add(formulaireModel);
                 db.SaveChanges();
-                return View(formulaireModel);
+                return View("ValidationFormulaire",formulaireModel);
             }
-            /*else
+            else
             {
-                if (formulaireModel.Nom == null)
-                {
-                    ModelState.AddModelError("", "Le champ 'Nom' est exigé");
-                }
-
-                if (formulaireModel.Adresse == null || formulaireModel.Adresse.Length < 5)
-                {
-                    ModelState.AddModelError("", "adresse trop courte");
-                }
-            }*/
-            return RedirectToAction("Index/Formulaire");
+                return View("Formulaire", formulaireModel);
+            }
         }
     }
 }
